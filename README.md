@@ -27,4 +27,120 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 
 * **Open API**: É como ficou renomeado o Swagger Specification em 2016, tornando-a assim em uma especificação "vendor-neutral" (A neutralidade do fornecedor é uma abordagem de negócios e design que visa garantir ampla compatibilidade e intercambiabilidade de produtos e tecnologias. O modelo abrange padronização, princípios de design não proprietários e práticas comerciais imparciais. ). O Swagger (framework) "gira em torno" do OpenAPI (antigo Swagger Specification), provendo ferramentas para a modelagem e documentação. É sem dúvida uma combinação espetacular, e não a toa é a mais famosa e eficiente no momento.
 
+# Especificação
 
+## Especificação Autenticação de usuário
+
+- **Qual é o path?**<br />
+  ex: /login POST
+- **Quais são os parâmetros do request?**<br />
+
+- **Qual é o formato da resposta?**<br />
+  ex: JSON
+- **Qual é o formato do request?**<br />
+  ex: JSON
+- **Qual é o request body (corpo da requisição)?**<br />
+  ex: email e password
+- **Qual é o response body (corpo da resposta)?**<br />
+  ex: token, id, email, firstName e lastName
+- **Qual é o status da resposta para operação de sucesso?**<br />
+  ex: 200 - ok
+- **Qual é a resposta para operação de erro no request?**<br />
+  ex: 400 - Dados request enviados incorretos
+- **Quais são as respostas para operações de erro de regra de negógio?**<br />
+  ex:
+  401 - Password incorreto
+  404 - Usuário não encontrado
+- **Qual é a resposta para operação de erro no servidor?**<br />
+  ex:
+  500 - Erro no servidor
+
+## Especificação para criação da conta de usuário
+
+- **Qual é o path?** <br />
+  /accounts GET
+  /accounts POST
+  /accounts/{id} GET
+  /accounts/{id} PUT
+  /accounts/{id} DELETE
+
+- **Quais são os parâmetros do request?**<br />
+  token JWT HEADER
+  {id} account PATH, quando necessário
+- **Qual é o formato da resposta?**<br />
+  JSON
+- **Qual é o formato do request?**<br />
+  JSON
+- **Qual é o request body (corpo da requisição)?**<br />
+  id, firstName, lastName, email, phoneNumber. password, dateBirth e gender
+- **Qual é o response body (corpo da resposta)?**<br />
+  id, firstName, lastName, email, phoneNumber, dateBirth e gender
+- **Qual é o status da resposta para operação de sucesso?**<br />
+  200 - OK GET
+  201 - Criado POST
+  202 - Aceito
+  204 - Sem conteúdo
+- **Qual é a resposta para operação de erro no request?**<br />
+  400 - Dados request enviados incorretos
+- **Quais são as respostas para operações de erro de regra de negógio?**<br />
+  401 - Token invalido, inexistente ou expirado
+  404 - Recurso {id} não encontrado
+- **Qual é a resposta para operação de erro no servidor?**<br />
+  500 - Erro no servidor
+
+## Especificação para inclusão dos dados de crescimento da criança
+
+- **Qual é o path?** <br />
+  /progress GET
+  /progress POST
+  /progress/{id} GET
+  /progress/{id} PUT
+  /progress/{id} DELETE
+- **Quais são os parâmetros do request?**<br />
+  token JWT HEADER
+  {id} progress PATH, quando necessário
+- **Qual é o formato da resposta?**<br />
+  JSON
+- **Qual é o formato do request?**<br />
+  JSON
+- **Qual é o request body (corpo da requisição)?**<br />
+  id, height, weight, headCircumference, dateProgress e account(id, email, firstName,dateBirth, gender e lastName)
+- **Qual é o response body (corpo da resposta)?**<br />
+  id, height, weight, headCircumference, dateProgress e account(id, email, firstName,dateBirth, gender e lastName)
+- **Qual é o status da resposta para operação de sucesso?**<br />
+  200 - ok GET
+  201 - Criado POST
+  202 - Aceito PUT
+  204 - Sem conteúdo DELETE
+- **Qual é a resposta para operação de erro no request?**<br />
+  400 - Dados request enviados incorretos
+- **Quais são as respostas para operações de erro de regra de negógio?**<br />
+  401 - Token invalido, inexistente ou expirado
+  404 - Recurso {id} não encontrado
+- **Qual é a resposta para operação de erro no servidor?**<br />
+  500 - Erro no servidor
+
+## Especificação relatório de desempenho de crescimento da criança
+
+- **Qual é o path?** <br />
+  /accounts/{email}/progress GET
+- **Quais são os parâmetros do request?**<br />
+  token JWT HEADER
+  {email} accounts PATH
+- **Qual é o formato da resposta?**<br />
+  JSON
+- **Qual é o formato do request?**<br />
+  JSON
+- **Qual é o request body (corpo da requisição)?**<br />
+
+- **Qual é o response body (corpo da resposta)?**<br />
+  height, weight, headCircumference, dateProgress
+- **Qual é o status da resposta para operação de sucesso?**<br />
+  200 - ok
+- **Qual é a resposta para operação de erro no request?**<br />
+  400 - Dados request enviados incorretos
+- **Quais são as respostas para operações de erro de regra de negógio?**<br />
+  401 - Token invalido, inexistente ou expirado
+  404 - Recurso {email} não encontrado
+- **Qual é a resposta para operação de erro no servidor?**<br />
+  500 - Erro no servidor
