@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Especificação relatório de crescimento
+  description: Especificação relatório de crescimento
+  contact:
+    email: leo.sena777@gmail.com
+  version: 1.0.0
+servers:
+- url: /
+security:
+- aplication:
+  - read
+  - write
+paths:
+  /accounts/{email}/progress:
+    get:
+      summary: Recuperar o progresso da criança pelo e-mail do usuário
+      parameters:
+      - name: email
+        in: path
+        description: email de indentificação da conta do usuário
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "404":
+          description: Recurso {email} não encontrado
+        "500":
+          description: Erro no servido
+components:
+  schemas:
+    body_response:
+      required:
+      - dateProgress
+      - headCircuference
+      - height
+      - weight
+      type: object
+      properties:
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircuference:
+          type: number
+        dateProgress:
+          type: string
+          format: date

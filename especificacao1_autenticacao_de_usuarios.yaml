@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Especificação autenticação de usuário
+  description: Especificação autenticação de usuário
+  contact:
+    email: leo.sena777@gmail.com
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /login:
+    post:
+      summary: Login usuário
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: dados enviados incorretos
+        "401":
+          description: password incorreto
+        "404":
+          description: usuário não encontrado
+        "500":
+          description: erro no servidor
+components:
+  schemas:
+    body_request:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          minimum: 1
+          type: string
+          format: email
+          example: admin@email.com
+        password:
+          minimum: 6
+          type: string
+          format: password
+          example: "123456"
+    body_response:
+      required:
+      - email
+      - fistName
+      - id
+      - lastName
+      - token
+      type: object
+      properties:
+        token:
+          type: string
+          example: todo...
+        account:
+          type: string
+          example: '{"id":1,"email":"email@email.com","fistName":"First name","lastName":"Last
+            name"}'

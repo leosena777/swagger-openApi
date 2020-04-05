@@ -1,0 +1,314 @@
+openapi: 3.0.0
+info:
+  title: Especificação dados da criança
+  description: Especificação dados da criança
+  contact:
+    email: leo.sena777@gmail.com
+  version: 1.0.0
+servers:
+- url: /
+security:
+- aplication:
+  - read
+  - write
+paths:
+  /progress:
+    get:
+      summary: Recuperar todas os progressos
+      parameters:
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "500":
+          description: Erro no servido
+    post:
+      summary: Cria uma nova progresso
+      parameters:
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        "201":
+          description: Criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "404":
+          description: Account {id} não encontrado
+        "500":
+          description: Erro no servido
+  /progress/{id}:
+    get:
+      summary: Recupera um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: id de indentificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "500":
+          description: Erro no servido
+    put:
+      summary: Atualiza um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: id de indentificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request'
+        required: true
+      responses:
+        "202":
+          description: Aceito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "500":
+          description: Erro no servido
+    delete:
+      summary: Exclui um progresso pelo id
+      parameters:
+      - name: id
+        in: path
+        description: id de indentificação do progresso
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        example: todo...
+      responses:
+        "204":
+          description: Sem conteúdo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response'
+        "400":
+          description: Dados request enviados incorretos
+        "401":
+          description: Token inválido, inexistente ou expirado
+        "500":
+          description: Erro no servido
+components:
+  schemas:
+    body_response:
+      required:
+      - account
+      - dateProgress
+      - headCircuference
+      - height
+      - id
+      - weight
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircuference:
+          type: number
+        dateProgress:
+          type: string
+          format: date
+        account:
+          $ref: '#/components/schemas/body_response_account'
+    body_request:
+      required:
+      - account
+      - dateProgress
+      - headCircuference
+      - height
+      - id
+      - weight
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        height:
+          type: number
+        weight:
+          type: number
+          example: 45
+        headCircuference:
+          type: number
+        dateProgress:
+          type: string
+          format: date
+        account:
+          $ref: '#/components/schemas/body_request_account'
+    body_response_account:
+      required:
+      - dateBirth
+      - email
+      - firstName
+      - gender
+      - id
+      - lastName
+      - phoneNumber
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: First
+        lastName:
+          type: string
+          example: Last
+        email:
+          type: string
+          format: email
+          example: email@email.com
+        phoneNumber:
+          type: string
+          example: 00-0000-0000
+        dateBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+          example: M
+          enum:
+          - M
+          - F
+    body_request_account:
+      required:
+      - dateBirth
+      - email
+      - firstName
+      - gender
+      - lastName
+      - phoneNumber
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: First
+        lastName:
+          type: string
+          example: Last
+        email:
+          type: string
+          format: email
+          example: email@email.com
+        phoneNumber:
+          type: string
+          example: 00-0000-0000
+        dateBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+          example: M
+          enum:
+          - M
+          - F
