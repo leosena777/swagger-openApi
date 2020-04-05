@@ -2,8 +2,8 @@
 
 ## DOC 
 
-[ Documentação Swagger](https://app.swaggerhub.com/help/index)
-['The OpenAPI Specification' ](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md)
+[ Documentação Swagger](https://app.swaggerhub.com/help/index) <br />
+[The OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md)
 
 ## Requisitos
 
