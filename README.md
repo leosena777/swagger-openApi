@@ -32,40 +32,38 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 ## Especificação Autenticação de usuário
 
 - **Qual é o path?**<br />
-  ex: /login POST
+  /login POST
 - **Quais são os parâmetros do request?**<br />
 
 - **Qual é o formato da resposta?**<br />
-  ex: JSON
+  JSON
 - **Qual é o formato do request?**<br />
-  ex: JSON
+  JSON
 - **Qual é o request body (corpo da requisição)?**<br />
-  ex: email e password
+  email e password
 - **Qual é o response body (corpo da resposta)?**<br />
-  ex: token, id, email, firstName e lastName
+  token, id, email, firstName e lastName
 - **Qual é o status da resposta para operação de sucesso?**<br />
-  ex: 200 - ok
+  200 - ok
 - **Qual é a resposta para operação de erro no request?**<br />
-  ex: 400 - Dados request enviados incorretos
+  400 - Dados request enviados incorretos
 - **Quais são as respostas para operações de erro de regra de negógio?**<br />
-  ex:
-  401 - Password incorreto
-  404 - Usuário não encontrado
+  401 - Password incorreto<br />
+  404 - Usuário não encontrado<br />
 - **Qual é a resposta para operação de erro no servidor?**<br />
-  ex:
   500 - Erro no servidor
 
 ## Especificação para criação da conta de usuário
 
 - **Qual é o path?** <br />
-  /accounts GET
-  /accounts POST
-  /accounts/{id} GET
-  /accounts/{id} PUT
-  /accounts/{id} DELETE
+  /accounts GET<br />
+  /accounts POST<br />
+  /accounts/{id} GET<br />
+  /accounts/{id} PUT<br />
+  /accounts/{id} DELETE<br />
 
 - **Quais são os parâmetros do request?**<br />
-  token JWT HEADER
+  token JWT HEADER<br />
   {id} account PATH, quando necessário
 - **Qual é o formato da resposta?**<br />
   JSON
@@ -76,14 +74,14 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 - **Qual é o response body (corpo da resposta)?**<br />
   id, firstName, lastName, email, phoneNumber, dateBirth e gender
 - **Qual é o status da resposta para operação de sucesso?**<br />
-  200 - OK GET
-  201 - Criado POST
-  202 - Aceito
-  204 - Sem conteúdo
+  200 - OK GET<br />
+  201 - Criado POST<br />
+  202 - Aceito<br />
+  204 - Sem conteúdo<br />
 - **Qual é a resposta para operação de erro no request?**<br />
-  400 - Dados request enviados incorretos
+  400 - Dados request enviados incorretos<br />
 - **Quais são as respostas para operações de erro de regra de negógio?**<br />
-  401 - Token invalido, inexistente ou expirado
+  401 - Token invalido, inexistente ou expirado<br />
   404 - Recurso {id} não encontrado
 - **Qual é a resposta para operação de erro no servidor?**<br />
   500 - Erro no servidor
@@ -91,13 +89,13 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 ## Especificação para inclusão dos dados de crescimento da criança
 
 - **Qual é o path?** <br />
-  /progress GET
-  /progress POST
-  /progress/{id} GET
-  /progress/{id} PUT
-  /progress/{id} DELETE
+  /progress GET<br />
+  /progress POST<br />
+  /progress/{id} GET<br />
+  /progress/{id} PUT<br />
+  /progress/{id} DELETE<br />
 - **Quais são os parâmetros do request?**<br />
-  token JWT HEADER
+  token JWT HEADER<br />
   {id} progress PATH, quando necessário
 - **Qual é o formato da resposta?**<br />
   JSON
@@ -108,14 +106,14 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 - **Qual é o response body (corpo da resposta)?**<br />
   id, height, weight, headCircumference, dateProgress e account(id, email, firstName,dateBirth, gender e lastName)
 - **Qual é o status da resposta para operação de sucesso?**<br />
-  200 - ok GET
-  201 - Criado POST
-  202 - Aceito PUT
-  204 - Sem conteúdo DELETE
+  200 - ok GET<br />
+  201 - Criado POST<br />
+  202 - Aceito PUT<br />
+  204 - Sem conteúdo DELETE<br />
 - **Qual é a resposta para operação de erro no request?**<br />
   400 - Dados request enviados incorretos
 - **Quais são as respostas para operações de erro de regra de negógio?**<br />
-  401 - Token invalido, inexistente ou expirado
+  401 - Token invalido, inexistente ou expirado<br />
   404 - Recurso {id} não encontrado
 - **Qual é a resposta para operação de erro no servidor?**<br />
   500 - Erro no servidor
@@ -125,7 +123,7 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 - **Qual é o path?** <br />
   /accounts/{email}/progress GET
 - **Quais são os parâmetros do request?**<br />
-  token JWT HEADER
+  token JWT HEADER<br />
   {email} accounts PATH
 - **Qual é o formato da resposta?**<br />
   JSON
@@ -140,7 +138,7 @@ Queremos que você crie um aplicativo para ajudar pais e pacientes com distúr
 - **Qual é a resposta para operação de erro no request?**<br />
   400 - Dados request enviados incorretos
 - **Quais são as respostas para operações de erro de regra de negógio?**<br />
-  401 - Token invalido, inexistente ou expirado
-  404 - Recurso {email} não encontrado
+  401 - Token invalido, inexistente ou expirado<br />
+  404 - Recurso {email} não encontrado<br />
 - **Qual é a resposta para operação de erro no servidor?**<br />
   500 - Erro no servidor
